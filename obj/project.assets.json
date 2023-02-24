@@ -1968,11 +1968,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\moyan\\InventoryApp1.0\\ASP.NET6_WebAPI-main\\InventoryApp\\InventoryApp.csproj",
+      "projectUniqueName": "C:\\Users\\moyan\\InventoryApp\\InventoryApp.csproj",
       "projectName": "InventoryApp",
-      "projectPath": "C:\\Users\\moyan\\InventoryApp1.0\\ASP.NET6_WebAPI-main\\InventoryApp\\InventoryApp.csproj",
+      "projectPath": "C:\\Users\\moyan\\InventoryApp\\InventoryApp.csproj",
       "packagesPath": "C:\\Users\\moyan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\moyan\\InventoryApp1.0\\ASP.NET6_WebAPI-main\\InventoryApp\\obj\\",
+      "outputPath": "C:\\Users\\moyan\\InventoryApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\moyan\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,9 @@
 namespace InventoryApp.Entities
 {
-    public class TypeProduct
+    public class TypeActor
     {
-        public int IdTypeProduct { get; set; }
+        public int IdTypeActor { get; set; }
         public string Name { get; set; }
+
     }
 }
