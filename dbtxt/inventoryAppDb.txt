@@ -1,0 +1,105 @@
+//User db
+
+CREATE TABLE `inventoryapp`.`user` (
+  `iduser` INT NOT NULL,
+  `userName` VARCHAR(40) NOT NULL,
+  `passwordHash` VARCHAR(200) NOT NULL,
+  `passwordSalt` VARCHAR(200) NOT NULL,
+  `created` DATETIME NOT NULL,
+  PRIMARY KEY (`iduser`));
+
+
+//TypeProduct db
+
+CREATE TABLE `inventoryapp`.`typeproduct` (
+  `idtypeProduct` INT NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idtypeProduct`));
+
+//Product db
+
+CREATE TABLE `inventoryapp`.`product` (
+  `idproduct` INT NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `costProduct` DECIMAL(6,4) NOT NULL,
+  `costSell` DECIMAL(6,4) NOT NULL,
+  `unit` VARCHAR(100) NULL,
+  PRIMARY KEY (`idproduct`));
+
+//Actor db
+
+CREATE TABLE `inventoryapp`.`actor` (
+  `idactor` INT NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
+  `address` VARCHAR(150) NOT NULL,
+  `phono` VARCHAR(20) NOT NULL,
+  `documentId` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`idactor`));
+
+//TypeActor db
+
+CREATE TABLE `inventoryapp`.`typeactor` (
+  `idtypeActor` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idtypeActor`));
+//Transaction
+
+CREATE TABLE `inventoryapp`.`transactions` (
+  `idtransactions` INT NOT NULL,
+  `date_transaction` DATETIME NOT NULL,
+  `typeTransaction` VARCHAR(45) NOT NULL,
+  `quantity` DECIMAL(6,4) NOT NULL,
+  `value` DECIMAL(6,4) NOT NULL,
+  PRIMARY KEY (`idtransactions`));
+
+FK product
+
+ALTER TABLE `inventoryapp`.`product` 
+DROP FOREIGN KEY `FK_idtypeProduct`;
+ALTER TABLE `inventoryapp`.`product` 
+CHANGE COLUMN `idtypeProduct` `idtypeProduct` INT(11) NOT NULL ;
+ALTER TABLE `inventoryapp`.`product` 
+ADD CONSTRAINT `FK_idtypeProduct`
+  FOREIGN KEY (`idtypeProduct`)
+  REFERENCES `inventoryapp`.`typeproduct` (`idtypeProduct`);
+
+
+FK actor
+ALTER TABLE `inventoryapp`.`actor` 
+ADD COLUMN `idtypeActor` INT NOT NULL AFTER `email`,
+ADD INDEX `idtypeActor_idx` (`idtypeActor` ASC) VISIBLE;
+;
+ALTER TABLE `inventoryapp`.`actor` 
+ADD CONSTRAINT `idtypeActor`
+  FOREIGN KEY (`idtypeActor`)
+  REFERENCES `inventoryapp`.`typeactor` (`idtypeActor`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+//transactionproducts db
+
+CREATE TABLE `inventoryapp`.`transactionproduct` (
+  `idtransactionproduct` INT NOT NULL,
+  `idproduct` INT NOT NULL,
+  `idtransactions` INT NOT NULL,
+  PRIMARY KEY (`idtransactionproduct`));
+
+FK transanctionproducts
+
+ALTER TABLE `inventoryapp`.`transactionproduct` 
+ADD INDEX `idtransactions_idx` (`idtransactions` ASC) VISIBLE,
+ADD INDEX `idproduct_idx` (`idproduct` ASC) VISIBLE;
+;
+ALTER TABLE `inventoryapp`.`transactionproduct` 
+ADD CONSTRAINT `idtransactions`
+  FOREIGN KEY (`idtransactions`)
+  REFERENCES `inventoryapp`.`transactions` (`idtransactions`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `idproduct`
+  FOREIGN KEY (`idproduct`)
+  REFERENCES `inventoryapp`.`product` (`idproduct`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+

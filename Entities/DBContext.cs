@@ -14,6 +14,7 @@ namespace InventoryApp.Entities
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Actor> Actors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -42,6 +43,40 @@ namespace InventoryApp.Entities
                     .HasMaxLength(45);
 
                 entity.Property(e => e.PasswordSalt)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+            });
+
+            modelBuilder.Entity<Actor>(entity =>
+            {
+                entity.HasKey(e => e.IdActor);
+
+                entity.ToTable("actor");
+
+                entity.Property(e => e.IdActor).HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+                entity.Property(e => e.Phono)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+                entity.Property(e => e.DocumentId)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
+                entity.Property(e => e.IdActor)
                     .IsRequired()
                     .HasMaxLength(45);
 

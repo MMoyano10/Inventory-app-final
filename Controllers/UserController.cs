@@ -1,5 +1,6 @@
 ﻿using InventoryApp.DTO;
 using InventoryApp.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
@@ -17,7 +18,18 @@ namespace InventoryApp.Controllers
             this.DBContext = DBContext;
         }
 
-        [HttpGet("GetUsers")]
+        [HttpPost("Login")]
+        public async Task<ActionResult<UserDTO>> LoginUser(LoginDTO login) 
+        {
+            var user = await DBContext.Users.FirstOrDefaultAsync(x => x.UserName == login.UserName.ToLower());
+
+            if (user == null) return Unauthorized("Invalid username");
+            else if( user.PasswordHash == login.Password) return Ok(user);
+            return Ok();
+        }
+
+
+            [HttpGet("GetUsers")]
         public async Task<ActionResult<List<UserDTO>>> Get()
         {
             var List = await DBContext.Users.Select(
