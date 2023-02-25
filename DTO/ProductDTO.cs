@@ -1,6 +1,6 @@
-namespace InventoryApp.Entities
+ namespace InventoryApp.DTO
 {
-    public class Product
+    public class ProductDTO
     {
         public int IdProduct { get; set; }
         public string Name { get; set; }
@@ -8,6 +8,6 @@ namespace InventoryApp.Entities
         public float CostSell { get; set; }
         public string Unit { get; set; }
         public int IdTypeProduct { get; set; }
-        public TypeProduct Type { get; set; }
+        public TypeProductDTO Type { get; set; }
     }
 }

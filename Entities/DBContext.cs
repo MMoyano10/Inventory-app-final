@@ -14,6 +14,9 @@ namespace InventoryApp.Entities
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Transactions> Transactions { get; set; }
+        public virtual DbSet<TransactionProduct> TransactionProducts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -45,6 +48,72 @@ namespace InventoryApp.Entities
                     .IsRequired()
                     .HasMaxLength(45);
 
+            });
+
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e => e.IdProduct);
+
+                entity.ToTable("product");
+
+                entity.Property(e => e.IdProduct).HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.CostProduct)
+                    .IsRequired();
+
+                entity.Property(e => e.CostSell)
+                    .IsRequired();
+
+                entity.Property(e => e.Unit)
+                    .IsRequired();
+                
+                entity.Property(e => e.IdTypeProduct)
+                    .IsRequired();
+            });
+
+            modelBuilder.Entity<Transactions>(entity =>
+            {
+                entity.HasKey(e => e.IdTransactions);
+
+                entity.ToTable("transactions");
+
+                entity.Property(e => e.IdTransactions).HasColumnType("int(11)");
+
+                entity.Property(e => e.TypeTransaction)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Quantity)
+                    .IsRequired();
+
+                entity.Property(e => e.Value)
+                    .IsRequired();
+
+                entity.Property(e => e.Date_Transaction)
+                    .IsRequired();
+                
+                entity.HasMany(b => b.Products)
+                .WithOne();
+            });
+
+            modelBuilder.Entity<TransactionProduct>(entity =>
+            {
+                entity.HasKey(e => e.IdTransactionProduct);
+
+                entity.ToTable("transactionproduct");
+
+                entity.Property(e => e.IdTransactionProduct).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdProduct)
+                    .IsRequired();
+
+                entity.Property(e => e.IdTransactions)
+                    .IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);
