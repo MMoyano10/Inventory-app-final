@@ -17,6 +17,7 @@ namespace InventoryApp.Entities
         public virtual DbSet<Actor> Actors { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Transactions> Transactions { get; set; }
+        public virtual DbSet<TypeProduct> TypeProducts { get; set; }
         public virtual DbSet<TransactionProduct> TransactionProducts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -149,6 +150,19 @@ namespace InventoryApp.Entities
 
                 entity.Property(e => e.IdTransactions)
                     .IsRequired();
+            });
+            modelBuilder.Entity<TypeProduct>(entity =>
+            {
+                entity.HasKey(e => e.IdTypeProduct);
+
+                entity.ToTable("typeproduct");
+
+                entity.Property(e => e.IdTypeProduct).HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(45);
+
             });
 
             OnModelCreatingPartial(modelBuilder);

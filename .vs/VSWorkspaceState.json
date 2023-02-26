@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DTO",
+    "\\Entities",
+    "\\Properties"
   ],
   "PreviewInSolutionExplorer": false
 }

@@ -1963,28 +1963,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/andresasimbaya/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\moyan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andresasimbaya/Personal/Angular/Inventory-app-final/InventoryApp.csproj",
+      "projectUniqueName": "C:\\Users\\moyan\\InventoryApp\\InventoryApp.csproj",
       "projectName": "InventoryApp",
-      "projectPath": "/Users/andresasimbaya/Personal/Angular/Inventory-app-final/InventoryApp.csproj",
-      "packagesPath": "/Users/andresasimbaya/.nuget/packages/",
-      "outputPath": "/Users/andresasimbaya/Personal/Angular/Inventory-app-final/obj/",
+      "projectPath": "C:\\Users\\moyan\\InventoryApp\\InventoryApp.csproj",
+      "packagesPath": "C:\\Users\\moyan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\moyan\\InventoryApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/andresasimbaya/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\moyan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2035,6 +2033,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.14, 6.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.14, 6.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.14, 6.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.14, 6.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -2043,7 +2059,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

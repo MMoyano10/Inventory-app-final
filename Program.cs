@@ -16,6 +16,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Add CORES
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolitic", app =>
+    {
+    app.AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod();   
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
